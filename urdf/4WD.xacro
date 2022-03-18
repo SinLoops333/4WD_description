@@ -1,0 +1,227 @@
+<?xml version="1.0" ?>
+<robot name="4WD" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<xacro:include filename="$(find 4WD_description)/urdf/materials.xacro" />
+<!--<xacro:include filename="$(find 4WD_description)/urdf/4WD.trans" />-->
+
+<xacro:include filename="$(find 4WD_description)/gazebo/4WD_detailed_physics.gazebo" />
+<xacro:include filename="$(find 4WD_description)/gazebo/4WD_detailed_materials.gazebo" />
+<xacro:include filename="$(find 4WD_description)/gazebo/4WD_detailed_plugins.gazebo" />
+
+
+
+<link name="base_link">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-2.8787852001939378e-05 0.005550227717790277 0.14882464349846136"/>
+    <mass value="6.0"/>
+    <inertia ixx="0.078527" ixy="-0.00018" ixz="-0.000122" iyy="0.153264" iyz="-0.000298" izz="0.168698"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <geometry>
+      <mesh filename="package://4WD_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <geometry>
+      <mesh filename="package://4WD_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="frt_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="1.943665309642184e-05 0.0059831651511232375 -2.586414751254429e-05"/>
+    <mass value="0.5"/>
+    <inertia ixx="0.004268" ixy="0.0" ixz="1e-06" iyy="0.007429" iyz="-0.0" izz="0.004267"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.133879 0.174622 -0.133743"/>
+    <geometry>
+      <mesh filename="package://4WD_description/meshes/frt_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.133879 0.174622 -0.133743"/>
+    <geometry>
+      <mesh filename="package://4WD_description/meshes/frt_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="brt_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="1.9436653340310084e-05 0.005983165151124875 -2.5864147542131732e-05"/>
+    <mass value="0.5"/>
+    <inertia ixx="0.004268" ixy="0.0" ixz="1e-06" iyy="0.007429" iyz="-0.0" izz="0.004267"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.149621 0.176622 -0.133743"/>
+    <geometry>
+      <mesh filename="package://4WD_description/meshes/brt_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.149621 0.176622 -0.133743"/>
+    <geometry>
+      <mesh filename="package://4WD_description/meshes/brt_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="flt_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="2.6093211264316407e-05 -0.005983389288617913 -1.9405678194001075e-05"/>
+    <mass value="0.5"/>
+    <inertia ixx="0.004267" ixy="-0.0" ixz="1e-06" iyy="0.007429" iyz="0.0" izz="0.004268"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.133879 -0.191378 -0.133743"/>
+    <geometry>
+      <mesh filename="package://4WD_description/meshes/flt_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.133879 -0.191378 -0.133743"/>
+    <geometry>
+      <mesh filename="package://4WD_description/meshes/flt_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="blt_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="2.609321144522725e-05 -0.0059833892886198 -1.9405678223310963e-05"/>
+    <mass value="0.5"/>
+    <inertia ixx="0.004267" ixy="-0.0" ixz="1e-06" iyy="0.007429" iyz="0.0" izz="0.004268"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.149621 -0.193378 -0.133743"/>
+    <geometry>
+      <mesh filename="package://4WD_description/meshes/blt_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.149621 -0.193378 -0.133743"/>
+    <geometry>
+      <mesh filename="package://4WD_description/meshes/blt_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="camera">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.0076469694586596415 0.0014197814177112546 0.01246989282252886"/>
+    <mass value="0.2"/>
+    <inertia ixx="0.00018" ixy="2e-06" ixz="0.0" iyy="2.6e-05" iyz="0.0" izz="0.000181"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.20057 -0.0 -0.27566"/>
+    <geometry>
+      <mesh filename="package://4WD_description/meshes/Camera_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.20057 -0.0 -0.27566"/>
+    <geometry>
+      <mesh filename="package://4WD_description/meshes/Camera_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="lidar_base_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="3.2657022058069085e-05 -2.972045101298247e-07 0.010005836462318896"/>
+    <mass value="0.3"/>
+    <inertia ixx="0.000126" ixy="-0.0" ixz="0.0" iyy="0.000127" iyz="-0.0" izz="0.000222"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.179596 -8e-06 -0.299905"/>
+    <geometry>
+      <mesh filename="package://4WD_description/meshes/lidar_base_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.179596 -8e-06 -0.299905"/>
+    <geometry>
+      <mesh filename="package://4WD_description/meshes/lidar_base_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="lidar_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="7.017564566724754e-06 -2.7168839522439408e-08 0.014584802315504353"/>
+    <mass value="0.3"/>
+    <inertia ixx="8.7e-05" ixy="-0.0" ixz="-0.0" iyy="8.7e-05" iyz="0.0" izz="0.000111"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.179605 -8e-06 -0.319905"/>
+    <geometry>
+      <mesh filename="package://4WD_description/meshes/lidar_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.179605 -8e-06 -0.319905"/>
+    <geometry>
+      <mesh filename="package://4WD_description/meshes/lidar_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<joint name="Rev23" type="continuous">
+  <origin rpy="0 0 0" xyz="0.133879 -0.174622 0.133743"/>
+  <parent link="base_link"/>
+  <child link="frt_1"/>
+  <axis xyz="0.0 1.0 0.0"/>
+</joint>
+
+<joint name="Rev24" type="continuous">
+  <origin rpy="0 0 0" xyz="-0.149621 -0.176622 0.133743"/>
+  <parent link="base_link"/>
+  <child link="brt_1"/>
+  <axis xyz="0.0 1.0 0.0"/>
+</joint>
+
+<joint name="Rev25" type="continuous">
+  <origin rpy="0 0 0" xyz="0.133879 0.191378 0.133743"/>
+  <parent link="base_link"/>
+  <child link="flt_1"/>
+  <axis xyz="0.0 1.0 0.0"/>
+</joint>
+
+<joint name="Rev26" type="continuous">
+  <origin rpy="0 0 0" xyz="-0.149621 0.193378 0.133743"/>
+  <parent link="base_link"/>
+  <child link="blt_1"/>
+  <axis xyz="0.0 1.0 0.0"/>
+</joint>
+
+<joint name="Rigid27" type="fixed">
+  <origin rpy="0 0 0" xyz="0.20057 0.0 0.27566"/>
+  <parent link="base_link"/>
+  <child link="camera"/>
+</joint>
+
+<joint name="Rigid28" type="fixed">
+  <origin rpy="0 0 0" xyz="0.179596 8e-06 0.299905"/>
+  <parent link="base_link"/>
+  <child link="lidar_base_1"/>
+</joint>
+
+<joint name="Rigid29" type="fixed">
+  <origin rpy="0 0 0" xyz="9e-06 0.0 0.02"/>
+  <parent link="lidar_base_1"/>
+  <child link="lidar_1"/>
+</joint>
+
+</robot>
