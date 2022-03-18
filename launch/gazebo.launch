@@ -1,0 +1,61 @@
+<?xml version="1.0" ?>
+
+<launch>
+
+  <arg name="move_forward_only" default="false"/>
+
+  <param command="$(find xacro)/xacro $(find 4WD_description)/urdf/4WD.xacro" name="robot_description"/>
+  <node args="-param robot_description -urdf -model 4WD" name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"/>
+
+  <node pkg="tf" type="static_transform_publisher" name="camera" args="0.20057 0.0 0.27566 -1.57 0 -1.57  base_link camera 100" />
+  
+
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" default="$(find 4WD_description)/World/Room.world"/>
+    <arg name="paused" value="false"/>
+    <arg name="use_sim_time" value="true"/>
+    <arg name="gui" value="true"/>
+    <arg name="headless" value="false"/>
+    <arg name="debug" value="false"/>
+  </include>
+
+  <!-- Map server -->
+  <arg name="map_file" default="$(find 4WD_description)/World/E.yaml"/>
+  <node pkg="map_server" name="map_server" type="map_server" args="$(find 4WD_description)/World/E.yaml"/>
+  <!-- AMCL -->
+  <include file="$(find 4WD_description)/launch/amcl.launch"/>
+
+  <!-- move_base -->
+  <include file="$(find 4WD_description)/launch/move_base.launch">
+    <arg name="move_forward_only" value="$(arg move_forward_only)"/>
+  </include>
+
+
+<group if="true"> 
+      <arg default="$(find 4WD_description)/launch/urdf.rviz" name="rvizconfig"/>
+      <node args="-d $(arg rvizconfig)" name="rviz" pkg="rviz" required="true" type="rviz"/>
+</group>
+
+ <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher"/>
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
+
+  
+<node pkg="pointcloud_to_laserscan" type="pointcloud_to_laserscan_node" name="pointcloud_to_laserscan">
+      <remap from="cloud_in" to="/camera/depth/points"/>
+      <remap from="scan" to="/scan" />
+      <rosparam>
+        target_frame: base_link
+        transform_tolerance: 0.1
+        min_height: 1.0
+        max_height: 3.0
+        angle_min: -3.14
+        angle_max: 3.14
+        angle_increment: 0.0021805
+        scan_time: 0.3333
+        range_min: 0.45
+        range_max: 20.0
+        use_inf: true
+        concurrency_level: 1
+      </rosparam>
+    </node>  
+</launch>

@@ -1,0 +1,23 @@
+4WD_controller:
+  # Publish all joint states -----------------------------------
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 50
+
+  # Position Controllers --------------------------------------
+  Rev23_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: Rev23
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  Rev24_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: Rev24
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  Rev25_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: Rev25
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  Rev26_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: Rev26
+    pid: {p: 100.0, i: 0.01, d: 10.0}
