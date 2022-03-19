@@ -42,7 +42,7 @@
   
 <node pkg="pointcloud_to_laserscan" type="pointcloud_to_laserscan_node" name="pointcloud_to_laserscan">
       <remap from="cloud_in" to="/camera/depth/points"/>
-      <remap from="scan" to="/scan" />
+      <remap from="scan" to="/camera/scan" />
       <rosparam>
         target_frame: base_link
         transform_tolerance: 0.1
