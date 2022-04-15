@@ -1,17 +1,17 @@
 # ROS Autonomy Simulation
 
 ## Clone
-cd ~/catkin_ws/src
+<copy-button>cd ~/catkin_ws/src</copy-button>
 
-git clone https://github.com/SinLoops333/4WD_description.git
-cd ~/catkin_ws 
+<copy-button>git clone https://github.com/SinLoops333/4WD_description.git
+cd ~/catkin_ws </copy-button>
 
-catkin build 
+<copy-button>catkin build 
 
-source ./devel/setup.bash 
+source ./devel/setup.bash </copy-button>
 
-source ~/.bashrc 
+<copy-button>source ~/.bashrc </copy-button>
 
 ## Launch Rviz and Gazebo
-roslaunch 4WD_description gazebo.launch  
+<copy-button>roslaunch 4WD_description gazebo.launch  </copy-button>
 
